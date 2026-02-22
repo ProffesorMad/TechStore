@@ -60,8 +60,8 @@ class OrderController extends Controller
     // ADMIN
     public function adminIndex()
     {
-        return Order::with('items.product', 'user')
-            ->latest()
+        return Order::with(['items.product', 'user'])
+            ->orderBy('created_at', 'desc')
             ->get();
     }
 
